@@ -50,3 +50,24 @@ export function getDiscList() {
   }) */
   return jsonp(url, data, options)
 }
+
+export function getSongList(disstid) {
+  const url = 'https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg'
+
+  const data = Object.assign({}, commonParams, {
+    disstid,
+    type: 1,
+    json: 1,
+    utf9: 1,
+    onlysong: 0,
+    needNewCode: 0,
+    hostUin: 0,
+    platform: 'yqq',
+    g_tk: 390933953
+  })
+
+  return jsonp(url, data, {
+    param: 'jsonpCallback',
+    prefix: 'playlistinfoCallback'
+  })
+}
